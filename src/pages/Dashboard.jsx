@@ -34,10 +34,10 @@ function Dashboard() {
   ]
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100">
       <Sidebar />
 
-      <div className="flex-1">
+      <div className="ml-64 flex-1">
         <Navbar />
 
         <main className="p-6">
@@ -46,12 +46,12 @@ function Dashboard() {
               Dashboard
             </h1>
 
-            <p className="text-gray-500 mt-1">
+            <p className="mt-1 text-gray-500">
               Welcome back, Admin!
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             <StatCard
               title="Total Users"
               value="1,250"
@@ -77,8 +77,8 @@ function Dashboard() {
             />
           </div>
 
-          <div className="bg-white rounded-xl shadow mt-6">
-            <div className="p-5 border-b">
+          <div className="mt-6 rounded-xl bg-white shadow">
+            <div className="border-b p-5">
               <h2 className="text-xl font-semibold">
                 Recent Users
               </h2>
@@ -88,15 +88,15 @@ function Dashboard() {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="text-left p-4">
+                    <th className="p-4 text-left">
                       Name
                     </th>
 
-                    <th className="text-left p-4">
+                    <th className="p-4 text-left">
                       Email
                     </th>
 
-                    <th className="text-left p-4">
+                    <th className="p-4 text-left">
                       Status
                     </th>
                   </tr>
@@ -118,7 +118,7 @@ function Dashboard() {
 
                       <td className="p-4">
                         <span
-                          className={`px-3 py-1 rounded-full text-sm ${
+                          className={`rounded-full px-3 py-1 text-sm ${
                             user.status === 'Active'
                               ? 'bg-green-100 text-green-700'
                               : 'bg-red-100 text-red-700'

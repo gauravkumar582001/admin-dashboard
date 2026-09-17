@@ -5,6 +5,7 @@ import {
   BarChart3,
   Settings,
   LogOut,
+  ShieldCheck,
 } from 'lucide-react'
 
 function Sidebar() {
@@ -38,18 +39,20 @@ function Sidebar() {
   }
 
   return (
-    <aside className="w-64 min-h-screen bg-gray-900 text-white flex flex-col">
-      <div className="p-6 border-b border-gray-700">
-        <h1 className="text-2xl font-bold">
-          Admin Panel
-        </h1>
+    <aside className="fixed left-0 top-0 z-50 flex h-screen w-64 flex-col bg-slate-900 text-white shadow-xl">
 
-        <p className="text-gray-400 text-sm mt-1">
-          React Dashboard
-        </p>
+      <div className="flex h-16 items-center gap-3 border-b border-slate-700 px-6">
+        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600">
+          <ShieldCheck size={22} />
+        </div>
+
+        <div>
+          <h1 className="text-lg font-bold">Admin Panel</h1>
+          <p className="text-xs text-slate-400">React Dashboard</p>
+        </div>
       </div>
 
-      <nav className="flex-1 p-4">
+      <nav className="flex-1 overflow-y-auto px-4 py-6">
         {menuItems.map((item) => {
           const Icon = item.icon
 
@@ -58,11 +61,9 @@ function Sidebar() {
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition ${
-                  isActive
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-300 hover:bg-gray-800'
-                }`
+                isActive
+                  ? 'mb-2 flex items-center gap-3 rounded-lg bg-blue-600 px-4 py-3 text-sm font-medium text-white'
+                  : 'mb-2 flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white'
               }
             >
               <Icon size={20} />
@@ -72,15 +73,16 @@ function Sidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-gray-700">
+      <div className="border-t border-slate-700 p-4">
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800"
+          className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-slate-300 transition hover:bg-red-600 hover:text-white"
         >
           <LogOut size={20} />
-          Logout
+          <span>Logout</span>
         </button>
       </div>
+
     </aside>
   )
 }
